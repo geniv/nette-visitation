@@ -1,0 +1,12 @@
+<div class="overlay">
+    <span class="overlay-backdrop"></span>
+    <div class="overlay-inner">
+        <a href="#" class="overlay-close"></a>
+        {form form}
+            <h4>{_'visitation-h4'}</h4>
+            {label telemail /}
+            {input telemail, class=>"form-control", placeholder=>$presenter->translator->translate('visitation-placeholder')}
+            {input send, class=>"btn btn-brand-form"}
+        {/form}
+    </div>
+</div>
