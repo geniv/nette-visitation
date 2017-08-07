@@ -40,6 +40,7 @@ use Visitation;
 
 protected function createComponentVisitation(Visitation $visitation)
 {
+    $visitation->setTemplatePath(__DIR__ . '/templates/visitation.latte');
     $visitation->getMessage()
         ->setFrom($this->context->parameters['emailSetup']['visitation']['from'])
         ->addTo($this->context->parameters['emailSetup']['visitation']['to'])
@@ -53,3 +54,15 @@ protected function createComponentVisitation(Visitation $visitation)
     return $visitation;
 }
 ```
+
+usage internal latte:
+```latte
+{form form}
+    {label telemail /}
+    {input telemail}
+    {input send}
+{/form}
+```
+
+###description:
+element telemail does not any validation, only required
