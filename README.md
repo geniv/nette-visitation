@@ -25,6 +25,13 @@ Include in application
 
 neon configure:
 ```neon
+parameters:
+    # visitation email
+    visitation:
+        from: "test@email.cz"
+        to: "test@email.cz"
+        bcc: "test@email.cz"
+
 services:
     - Visitation(%tablePrefix%)
 ```
@@ -44,8 +51,11 @@ protected function createComponentVisitation(Visitation $visitation)
     $visitation->getMessage()
         ->setFrom($this->context->parameters['emailSetup']['visitation']['from'])
         ->addTo($this->context->parameters['emailSetup']['visitation']['to'])
-        ->addBcc($this->context->parameters['emailSetup']['visitation']['bcc'])
         ->setSubject('Sjednání prohlídky');
+
+    if (isset($this->context->parameters['emailSetup']['visitation']['bcc'])){
+        $visitation->getMessage()->->addBcc($this->context->parameters['emailSetup']['visitation']['bcc']);
+    }
 
     $visitation->onSuccess[] = function ($values) {
         $this->flashMessage($this->translator->translate('visitation-onsuccess'), 'info');
