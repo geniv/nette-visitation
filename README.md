@@ -23,7 +23,7 @@ require:
 Include in application
 ----------------------
 
-neon configure:
+neon configure (for configure in presenter):
 ```neon
 parameters:
     # visitation email
@@ -31,9 +31,12 @@ parameters:
         from: "test@email.cz"
         to: "test@email.cz"
         bcc: "test@email.cz"
+```
 
-services:
-    - Visitation(%tablePrefix%)
+neon configure extension:
+```neon
+extensions:
+    visitation: Visitation\Bridges\Nette\Extension
 ```
 
 usage:
@@ -74,5 +77,5 @@ usage internal latte:
 {/form}
 ```
 
-###description:
+####description:
 element telemail does not any validation, only required

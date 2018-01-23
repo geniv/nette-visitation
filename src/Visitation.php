@@ -1,5 +1,7 @@
 <?php
 
+namespace Visitation;
+
 use Dibi\Connection;
 use Latte\Engine;
 use Locale\ILocale;
@@ -44,18 +46,18 @@ class Visitation extends Control
     /**
      * Visitation constructor.
      *
-     * @param             $prefix
-     * @param Connection  $connection
-     * @param ILocale     $locale
-     * @param ITranslator $translator
-     * @param IMailer     $mailer
+     * @param array            $parameters
+     * @param Connection       $connection
+     * @param ILocale          $locale
+     * @param ITranslator|null $translator
+     * @param IMailer          $mailer
      */
-    public function __construct($prefix, Connection $connection, ILocale $locale, ITranslator $translator, IMailer $mailer)
+    public function __construct(array $parameters, Connection $connection, ILocale $locale, ITranslator $translator = null, IMailer $mailer)
     {
         parent::__construct();
 
         // define table names
-        $this->tableVisitation = $prefix . self::TABLE_NAME;
+        $this->tableVisitation = $parameters['tablePrefix'] . self::TABLE_NAME;
 
         $this->connection = $connection;
         $this->locale = $locale;
