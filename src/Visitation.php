@@ -2,7 +2,7 @@
 
 use Dibi\Connection;
 use Latte\Engine;
-use Locale\Locale;
+use Locale\ILocale;
 use Nette\Application\UI\Control;
 use Nette\Application\UI\Form;
 use Nette\Localization\ITranslator;
@@ -25,7 +25,7 @@ class Visitation extends Control
     private $tableVisitation;
     /** @var Connection database connection from DI */
     private $connection;
-    /** @var Locale */
+    /** @var ILocale */
     private $locale;
     /** @var ITranslator */
     private $translator;
@@ -46,11 +46,11 @@ class Visitation extends Control
      *
      * @param             $prefix
      * @param Connection  $connection
-     * @param Locale      $locale
+     * @param ILocale     $locale
      * @param ITranslator $translator
      * @param IMailer     $mailer
      */
-    public function __construct($prefix, Connection $connection, Locale $locale, ITranslator $translator, IMailer $mailer)
+    public function __construct($prefix, Connection $connection, ILocale $locale, ITranslator $translator, IMailer $mailer)
     {
         parent::__construct();
 
