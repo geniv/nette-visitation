@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.5.4.1deb2ubuntu2
--- http://www.phpmyadmin.net
+-- version 4.6.6deb4
+-- https://www.phpmyadmin.net/
 --
--- Počítač: localhost
--- Vytvořeno: Stř 02. srp 2017, 10:05
--- Verze serveru: 10.0.29-MariaDB-0ubuntu0.16.04.1
--- Verze PHP: 7.0.18-0ubuntu0.16.04.1
+-- Počítač: localhost:3306
+-- Vytvořeno: Sob 27. led 2018, 20:39
+-- Verze serveru: 10.1.26-MariaDB-0+deb9u1
+-- Verze PHP: 7.0.27-0+deb9u1
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -17,18 +17,18 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Databáze: `zdimericka`
+-- Databáze: `netteweb`
 --
 
 -- --------------------------------------------------------
 
 --
--- Struktura tabulky `zdm_visitation`
+-- Struktura tabulky `prefix_visitation`
 --
 
-CREATE TABLE `zdm_visitation` (
-  `id` int(11) NOT NULL,
-  `id_locale` int(11) DEFAULT NULL,
+CREATE TABLE `prefix_visitation` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `id_locale` bigint(20) UNSIGNED DEFAULT NULL,
   `telemail` varchar(100) DEFAULT NULL,
   `added` datetime DEFAULT NULL,
   `ip` varchar(45) DEFAULT NULL
@@ -39,30 +39,30 @@ CREATE TABLE `zdm_visitation` (
 --
 
 --
--- Klíče pro tabulku `zdm_visitation`
+-- Klíče pro tabulku `prefix_visitation`
 --
-ALTER TABLE `zdm_visitation`
+ALTER TABLE `prefix_visitation`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `fk_visitation_zdm_locale_idx` (`id_locale`);
+  ADD KEY `fk_visitation_locale_idx` (`id_locale`);
 
 --
 -- AUTO_INCREMENT pro tabulky
 --
 
 --
--- AUTO_INCREMENT pro tabulku `zdm_visitation`
+-- AUTO_INCREMENT pro tabulku `prefix_visitation`
 --
-ALTER TABLE `zdm_visitation`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+ALTER TABLE `prefix_visitation`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 --
 -- Omezení pro exportované tabulky
 --
 
 --
--- Omezení pro tabulku `zdm_visitation`
+-- Omezení pro tabulku `prefix_visitation`
 --
-ALTER TABLE `zdm_visitation`
-  ADD CONSTRAINT `fk_visitation_locale` FOREIGN KEY (`id_locale`) REFERENCES `zdm_locale` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+ALTER TABLE `prefix_visitation`
+  ADD CONSTRAINT `fk_visitation_locale` FOREIGN KEY (`id_locale`) REFERENCES `prefix_locale` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
